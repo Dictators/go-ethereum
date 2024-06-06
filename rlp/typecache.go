@@ -27,7 +27,8 @@ import (
 )
 
 // typeinfo is an entry in the type cache.
-type typeinfo struct {
+// 存储了解码器和解码器函数
+type typeinfo struct { //
 	decoder    decoder
 	decoderErr error // error from makeDecoder
 	writer     writer
@@ -51,7 +52,8 @@ type typeCache struct {
 	cur atomic.Value
 
 	// This lock synchronizes writers.
-	mu   sync.Mutex
+	mu sync.Mutex
+	// 核心数据结构，
 	next map[typekey]*typeinfo
 }
 
